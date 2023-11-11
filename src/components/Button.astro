@@ -1,0 +1,49 @@
+---
+interface Props {
+  href: string;
+  target?: '_blank' | '_self';
+  color?: string;
+  colord?: string;
+}
+
+import colors from '../config/colors.json';
+
+if (Astro.props.target === undefined) {
+  Astro.props.target = '_self';
+}
+
+if (Astro.props.color === undefined) {
+  Astro.props.color =
+    colors[Math.floor(Math.random() * colors.length)];
+}
+if (Astro.props.colord === undefined) {
+  Astro.props.colord =
+    colors[Math.floor(Math.random() * colors.length)];
+}
+
+const { href, target, color, colord } = Astro.props;
+---
+
+<style define:vars={{ color: color, colord: colord}}>
+  a.brutal-btn {
+    filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+    border-radius: 0.5rem;
+    background-color: white;
+  }
+  a.brutal-btn:hover {
+    filter: drop-shadow(3px 3px 0 rgb(0 0 0 / 1));
+    background-color: var(--color);
+  }
+  html.dark a.brutal-btn:hover {
+    filter: drop-shadow(3px 3px 0 rgb(0 0 0 / 1));
+    background-color: var(--colord);
+  }
+</style>
+
+<a
+  href={href}
+  target={target}
+  class='brutal-btn righteous inline-block py-2 px-4 border-2 border-black transition-all ease-in-out duration-150'
+>
+  <slot />
+</a>

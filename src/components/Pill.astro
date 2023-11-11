@@ -1,0 +1,46 @@
+---
+interface Props {
+  color?: string;
+  colord?: string;
+}
+import colors from '../config/colors.json';
+
+if (Astro.props.color === undefined) {
+  Astro.props.color =
+    colors[Math.floor(Math.random() * colors.length)];
+}
+if (Astro.props.colord === undefined) {
+  Astro.props.colord =
+    colors[Math.floor(Math.random() * colors.length)];
+}
+
+const { color, colord } = Astro.props;
+---
+
+<style define:vars={{ color: color, colord: colord}}>
+  span.brutal-pill {
+    filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+    user-select: none;
+    background-color: white;
+    border-radius: 9999px;
+    border: 2px solid black;
+    padding: 0.25rem 0.75rem;
+    transition: all;
+    transition-duration: 0.15s;
+    animation: ease-in-out;
+    font-size: small;
+  }
+
+  span.brutal-pill:hover {
+    filter: drop-shadow(3px 3px 0 rgb(0 0 0 / 1));
+    background-color: var(--color);
+  }
+  html.dark span.brutal-pill:hover {
+    filter: drop-shadow(3px 3px 0 rgb(0 0 0 / 1));
+    background-color: var(--colord);
+  }
+</style>
+
+<span class='brutal-pill text-nowrap'>
+  <slot />
+</span>
