@@ -28,7 +28,7 @@ export default defineConfig({
         discord: 'https://discord.netadao.zone/',
 			},
       editLink: {
-				baseUrl: 'https://github.com/withastro/starlight/edit/main/docs/',
+				baseUrl: 'https://github.com/Massvdev/NetaAstroSL/tree/master/src/content/docs/docs',
 			},
 			sidebar: [
         {
