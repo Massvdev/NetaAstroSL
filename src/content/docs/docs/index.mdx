@@ -1,0 +1,36 @@
+---
+title: Welcome to NetaDøcs 
+description: A source for information related to NetaDAO and the Neta token.
+template: splash
+hero:
+  tagline: A source for information related to NetaDAO and the Neta token
+  image:
+    file: ../../../assets/houston.webp
+  actions:
+    - text: Start Here
+      link: /docs/reference/faq/
+      icon: rocket
+      variant: primary
+    - text: powered by Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Dig deeper into NetaDAO" icon="magnifier">
+		See [what we have been up to](/docs/netadao/propa1/).
+	</Card>
+	<Card title="Still lost?" icon="puzzle">
+		Check our [FAQs](/docs/reference/faq/) or go to [NetaDao Home](/).
+	</Card>
+	<Card title="Learn more about the Neta token" icon="setting">
+		See [Airdrop Distribution](/docs/neta-token/airdrop-distribution/) and [Neta Tokenomics](/docs/neta-token/neta-tokenomics/).
+	</Card>
+	<Card title="Contribute to NetaDøcs" icon="pen">
+		Edit Links at foot of every page. Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	</Card>
+</CardGrid>
