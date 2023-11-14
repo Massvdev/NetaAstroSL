@@ -71,7 +71,7 @@ A localized store of value on Juno for the network's ecosystem and the greater C
 Thank you for asking! Here are some ways you can contribute to Neta DAO:
 
 - Get involved in [Commonwealth discussion](https://commonwealth.im/neta-money/)
-- Attend weekly meetings and share your perspective (every Thursday at [23:00 UTC](https://mytime.io/23:00/UTC) in our Discord)
+- Attend weekly meetings and share your perspective (every Saturday at [11:00 UTC](https://mytime.io/23:00/UTC) in our Discord)
 - Browse our [Dework](https://app.dework.xyz/neta-dao) to help with existing tasks or create your own task proposal
 - Post your creative ideas in our Discord or jump in to help someone else
 - Create promotional material (graphics, video, writing, etc)
