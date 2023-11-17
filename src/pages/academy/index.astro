@@ -1,10 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '@layouts/Default.astro';
-import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
+import BlogList from '@components/academy/AcadList.astro';
+import RecentAcadPosts from '@components/generic/RecentBlogPosts.astro';
 import MobileSocials from '@components/home/MobileSocials.astro';
 import Pill from '@components/Pill.astro';
 import Button from '@components/Button.astro';
 import Card from '@components/Card.astro';
+import {Content as CoiningReason} from './coiningreason.md';
+
+const posts = await getCollection('blog').then((collection) =>
+  collection.reverse()
+);
 
 const builtWith = [
   { name: 'DAODAO', url: 'https://daodao.zone/' },
@@ -20,55 +27,38 @@ const builtWith = [
     url: 'https://docs.astro.build/en/guides/integrations-guide/sitemap/',
   },
   { name: 'Vercel', url: 'https://vercel.com' },
-  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
 ];
 
 const stakeWith = [
   { name: 'Stake JUNO', url: 'https://wallet.keplr.app/chains/juno?modal=validator&chain=juno-1&validator_address=junovaloper1f2jpv5sc6ur6yurq5w0t2chphrznpy8lfvj9vs' },
   { name: 'Stake AKT', url: 'https://wallet.keplr.app/chains/akash?modal=validator&chain=akashnet-2&validator_address=akashvaloper1f2jpv5sc6ur6yurq5w0t2chphrznpy8l86yse9' },
   { name: 'Stake JKL', url: 'https://ping.pub/jackal/staking/jklvaloper1s4rscs2jj7qydkkrsrc52rgvq38wwgrqdrcrdq' },
-  { name: 'Stake JUNOX', url: 'https://en.wikipedia.org/wiki/Rickrolling' },
 ];
 ---
 
 <Layout
-  title='Home'
-  pageTitle='NetaDAO | Home'
-  description='NetaDAO is a community accelerator program.'
+  title='NetaDAO | Academy 🏛'
+  description='NetaDAO Academy | A place to learn'
+  pageTitle='NetaDAO Academy'
 >
-  <main class='bg-#9F9A9E dark:bg-gradient-to-b from-cyan-950 to-purple-700 dark:rounded-10 border-b-4 border-1 border-black p-6'>
+  <main class='bg-#9F9A9E dark:bg-gradient-to-b from-cyan-950 to-stone-900 dark:rounded-10 border-b-4 border-1 border-black p-6'>
     <MobileSocials />
     <section id='about' class='grid md:grid-cols-8 flex-auto gap-4 mt-4'>
       <h2 class='hidden'>About NetaDAO</h2>
       <div class='col-span-4 flex-col flex-wrap justify-between'>
-        <Card color='#E7E5E8' colord='#7d53de'>
+        <Card color='#E7E5E8' colord='#78716c'>
           <div class='flex flex-col justify-between items-start gap-4'>
             <p class='mt-4 outfit text-2xl md:text-5xl lg:text-7xl'>
-              What is <a
+              <a
                 class='text-#ED2E35 dark:text-white righteous'
                 target='_blank'
-                href='https://daodao.zone/dao/juno1c5v6jkmre5xa9vf9aas6yxewc7aqmjy0rlkkyk4d88pnwuhclyhsrhhns6/proposals'>NetaDAØ</a
+                href='https://daodao.zone/dao/juno1c5v6jkmre5xa9vf9aas6yxewc7aqmjy0rlkkyk4d88pnwuhclyhsrhhns6/proposals'>NetaDAØ Academy</a
               >
             </p>
             <p class='outfit m-2 text-2xl md:text-3xl lg:text-4xl'>
-              NetaDAO is a collective of Juno supporters organizing to accelerate the development and adoption of Juno Network and the Cosmos ecosystem at large.
+              NetaDAO Academy is a subDAO focused on research and educational outreach.
             </p>
             <ul class='flex gap-4 flex-wrap justify-left'>
-            <Button color='#FF5757' colord='#B4DE53' target={'_self'} href='/blog/'>
-              <p class='righteous'>
-              Go to the NetaDAO blog &rarr;
-              </p>
-            </Button>
-            <Button color='#FF5757' colord='#B4DE53' target={'_self'} href='/docs/'>
-              <p class='righteous'>
-              Go to NetaDøcs 🔎
-              </p>
-            </Button>
-            <Button color='#FF5757' colord='#B4DE53' target={'_self'} href='/academy/'>
-              <p class='righteous'>
-              Go to NetaDAO Academy 🏛
-              </p>
-            </Button>
             </ul>
           </div>
         </Card>
@@ -79,7 +69,7 @@ const stakeWith = [
             Stake With US
           </h2>
           <p class='outfit text-xl md:text-2xl lg:text-2xl mb-4'>
-            You can contribute to NetaDAO operations by staking with one of our validators:
+            If you would like to support Neta DAO’s work, please consider delegating with the Neta DAO:
           </p>
            <ul class='flex gap-4 flex-wrap justify-center'>
             {
@@ -102,9 +92,9 @@ const stakeWith = [
         </Card>
       </div>
       <div class='col-span-2 flex-col flex-wrap justify-between'>
-        <Card color='#E7E5E8' colord='#53DEC3'>
+        <Card color='#E7E5E8' colord='#eab308'>
           <h2 class='text-2xl md:text-4xl outfit lg:text-5xl mb-8'>
-            NetaDAO is built with
+            Find Coining Reason at
           </h2>
           <ul class='flex gap-4 flex-wrap justify-center'>
             {
@@ -127,6 +117,20 @@ const stakeWith = [
         </Card>
       </div>     
     </section>
-    <RecentBlogPosts />
+    <div class='col-span-2 flex-col flex-wrap justify-between mt-4'>
+      <Card color='#E7E5E8' colord='#44403c'>
+        <p class='mt-4 outfit text-2xl md:text-5xl lg:text-7xl'>
+          <a
+            class='text-#ED2E35 dark:text-yellow righteous'
+            target='_blank'
+            href='https://daodao.zone/dao/juno1c5v6jkmre5xa9vf9aas6yxewc7aqmjy0rlkkyk4d88pnwuhclyhsrhhns6/proposals'>Coining Reason</a
+          > 
+        </p>
+        <h2 class='text-2xl md:text-4xl outfit lg:text-5xl mb-8'>
+          A NetaDAO Academy Series
+        </h2>
+          <CoiningReason />
+      </Card>
+    </div>   
   </main>
 </Layout>

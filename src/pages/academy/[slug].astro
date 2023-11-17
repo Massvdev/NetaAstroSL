@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const acadEntries = await getCollection('academy');
+  return acadEntries.map((acadpost) => ({
+    params: { slug: acadpost.slug },
+    props: { acadpost },
+  }));
+}
+
+interface Props {
+  acadpost: CollectionEntry<'academy'>;
+}
+
+const { acadpost } = Astro.props;
+const { Content } = await acadpost.render();
+---
+
+<Content />
