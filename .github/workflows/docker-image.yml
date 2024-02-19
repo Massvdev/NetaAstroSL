@@ -32,5 +32,5 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/nestastro:${{ steps.tag_date_time.outputs.tag }}
 
-      - name: Print image name with tag
-        run: echo "image name:${{ secrets.DOCKER_USERNAME }}/nestastro:${{ steps.tag_date_time.outputs.tag }}"
+      - name: Print tag name
+        run: echo "new tag name:${{ steps.tag_date_time.outputs.tag }}"
