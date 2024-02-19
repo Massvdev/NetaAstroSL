@@ -1,34 +1,27 @@
-name: Build and publish a Docker image to Docker Hub
+name: Docker Build And Push To Docker Hub
 
 on:
-  # Publish on releases, e.g. v2.1.13 (image tagged as "2.1.13" - "v" prefix is removed)
-  release:
-    types: [published]
-
-  # Publish on pushes to the main branch (image tagged with date and time)
   push:
     branches:
       - master
 
 jobs:
-  docker_publish:
-    runs-on: ubuntu-20.04
-
+  build:
+    name: Build Astro
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out the code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build the Docker image
-        run: docker buildx build --platform linux/amd64,linux/arm64 --push -t chaitanyarai/netaastro:$(date +%Y-%m-%d-%H-%M-%S) .
-
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Push the Docker image to Docker Hub
-        run: docker push chaitanyarai/netaastro:$(date +%Y-%m-%d-%H-%M-%S)
+      - name: Build Docker Image
+        id: buildAndPushImage
+        uses: MaximilianoBz/dockerhub-buildpush@v1.0
+        with:
+          registry_url: 'docker.io'
+          repository_name: 'netastro'
+          user_name: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          image_version: 'v1.0'
+          docker_file: '.'
+      - name: Get pre step result output image_pull_url
+        run: echo "The time was ${{ steps.buildAndPushImage.outputs.image_pull_url }}"
