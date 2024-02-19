@@ -30,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: chaitanyarai/nestastro:${{ steps.tag_date_time.outputs.tag }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/nestastro:${{ steps.tag_date_time.outputs.tag }}
