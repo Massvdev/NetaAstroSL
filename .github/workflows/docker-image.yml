@@ -31,3 +31,6 @@ jobs:
         with:
           push: true
           tags: chaitanyarai/nestastro:${{ steps.tag_date_time.outputs.tag }}
+      -
+        name: Print full image name with tag
+        run: echo "Full image name: chaitanyarai/nestastro:${{ steps.tag_date_time.outputs.tag }}"
