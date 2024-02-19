@@ -25,10 +25,10 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Build the Docker image
-        run: docker buildx build --platform linux/amd64,linux/arm64 --push -t chaitanyarai/NetaAstro:$(date +%Y-%m-%d-%H-%M-%S) .
+        run: docker buildx build --platform linux/amd64,linux/arm64 --push -t chaitanyarai/netaastro:$(date +%Y-%m-%d-%H-%M-%S) .
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push the Docker image to Docker Hub
-        run: docker push chaitanyarai/NetaAstro:$(date +%Y-%m-%d-%H-%M-%S)
+        run: docker push chaitanyarai/netaastro:$(date +%Y-%m-%d-%H-%M-%S)
