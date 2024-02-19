@@ -1,34 +1,29 @@
-name: Build and publish a Docker image to Docker Hub
+name: ci
 
 on:
-  # Publish on releases, e.g. v2.1.13 (image tagged as "2.1.13" - "v" prefix is removed)
-  release:
-    types: [published]
-
-  # Publish on pushes to the main branch (image tagged with date and time)
   push:
     branches:
-      - main
+      - 'master'
 
 jobs:
-  docker_publish:
-    runs-on: ubuntu-20.04
-
+  docker:
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out the code
-        uses: actions/checkout@v2
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build the Docker image
-        run: docker buildx build --platform linux/amd64,linux/arm64 --push -t chaitanyarai/NetaAstro:$(date +%Y-%m-%d-%H-%M-%S) .
-
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Push the Docker image to Docker Hub
-        run: docker push chaitanyarai/NetaAstro:$(date +%Y-%m-%d-%H-%M-%S)
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: chaitanyarai/nestastro:latest

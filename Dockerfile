@@ -16,3 +16,4 @@ EXPOSE 4321
 
 CMD ["pnpm", "start","--host","0.0.0.0"]
  
+ 
