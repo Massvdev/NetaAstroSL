@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/nestastro:${{ steps.tag_date_time.outputs.tag }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/netaastrosl:${{ steps.tag_date_time.outputs.tag }}
 
       - name: Print tag name
         run: echo "new tag name:${{ steps.tag_date_time.outputs.tag }}"
