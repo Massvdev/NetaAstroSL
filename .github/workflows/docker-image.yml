@@ -22,8 +22,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       -
+        name: Generate tag with date and time
+        id: tag_date_time
+        run: echo "::set-output name=tag::$(date +'%Y%m%d-%H%M%S')"
+      -
         name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: chaitanyarai/nestastro:latest
+          tags: chaitanyarai/nestastro:${{ steps.tag_date_time.outputs.tag }}
