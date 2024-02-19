@@ -26,9 +26,6 @@ jobs:
         id: tag_date_time
         run: echo "::set-output name=tag::$(date +'%Y%m%d-%H%M%S')"
       -
-        name: Print full image name with tag
-        run: echo "Full image name: chaitanyarai/nestastro:${{ steps.tag_date_time.outputs.tag }}"
-      -
         name: Build and push
         uses: docker/build-push-action@v5
         with:
