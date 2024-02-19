@@ -1,7 +1,7 @@
 # NetaAstroSL - Neta Astro Starlight
 
 Neta Astro Starlight is a lightweight general purpose DAO website built ontop of [Astro](https://astro.build/) that combines the neobrutalist theme [Brutal](https://brutal.elian.codes/) with support for astros leading documentation framework [Starlight](https://starlight.astro.build/)
-
+ 
 # Brutal - The neobrutalist Astro theme
 
 Brutal is a minimal neobrutalist theme for [Astro](https://astro.build/). It's based on Neobrutalist Web Design, a movement that aims to create websites with a minimalistic and functional design. It has some integrations like Image Optimization, RSS, Sitemap, ready to get your SEO done right.
