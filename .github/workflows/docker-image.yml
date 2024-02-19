@@ -8,7 +8,7 @@ on:
   # Publish on pushes to the main branch (image tagged with date and time)
   push:
     branches:
-      - main
+      - master
 
 jobs:
   docker_publish:
