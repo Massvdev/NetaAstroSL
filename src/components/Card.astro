@@ -40,6 +40,12 @@ const { color, colord } = Astro.props;
   }
   div.brutal-card:hover {
     filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+    background-image: linear-gradient(to top left, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8));
+
+  }
+  html.dark div.brutal-card:hover {
+    filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+    background-image: linear-gradient(to bottom, var(--colord), rgb(3, 105, 161), rgb(190, 242, 100));
   }
 </style>
 
