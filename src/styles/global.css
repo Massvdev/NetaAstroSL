@@ -37,6 +37,20 @@
   src: url("/fonts/sanchez.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Ancient";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Ancient.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Oldstyle";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/OldStyle.ttf") format("truetype");
+}
+
 .outfit {
   font-family: 'Outfit', sans-serif;
 }
