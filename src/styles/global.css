@@ -76,6 +76,15 @@
 .sanchez {
   font-family: 'Sanchez', serif;
 }
+.gotham {
+  font-family: 'Gotham', serif;
+}
+.ancient {
+  font-family: 'Ancient', serif;
+}
+.oldstyle {
+  font-family: 'Oldstyle', serif;
+}
 .card-shadow {
   filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
   transition: all;
